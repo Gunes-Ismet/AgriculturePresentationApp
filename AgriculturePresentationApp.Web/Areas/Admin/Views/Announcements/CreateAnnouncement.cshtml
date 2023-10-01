@@ -1,0 +1,36 @@
+﻿
+@model CreateAnnouncementDTO
+
+@{
+    ViewData["Title"] = "CreateAnnouncement";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Yeni Duyuru Ekle</h4>
+            <form class="forms-sample" asp-action="CreateAnnouncement">
+                <div class="form-group">
+                    <label class="form-label" asp-for="Title"></label>
+                    <input asp-for="Title" class="form-control" placeholder="Lütfen başlık giriniz...." />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="Description"></label>
+                    <textarea asp-for="Description" class="form-control" placeholder="Lütfen açıklama giriniz...."> </textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="Date"></label>
+                    <input asp-for="Date" class="form-control" type="date" placeholder="Lütfen tarih giriniz...." />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-outline-info">Kaydet</button>
+                <button class="btn btn-light" asp-area="Admin" asp-controller="Announcements" asp-action="Index">Vazgeç</button>
+            </form>
+        </div>
+    </div>
+</div>
+

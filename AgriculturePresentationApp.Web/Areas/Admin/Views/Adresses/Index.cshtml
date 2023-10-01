@@ -1,0 +1,42 @@
+﻿
+@model List<GetAdressVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Adres Sayfası</h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Adres Satırı 1</th>
+                            <th>Adres Satırı 2</th>
+                            <th>Adres Satırı 3</th>
+                            <th>Telefon</th>
+                            <th>Güncelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var adress in Model)
+                        {
+                            <tr>
+                                <td>@adress.Description1</td>
+                                <td>@adress.Description2</td>
+                                <td>@adress.Description3</td>
+                                <td>@adress.Description4</td>
+                                <td>
+                                    <a asp-area="Admin" asp-controller="Adresses" asp-action="UpdateAdress" asp-route-id="@adress.Id" class="btn btn-outline-success">Güncelle</a>
+                                </td>                                
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+﻿
+@model UpdateTeamDTO
+
+@{
+    ViewData["Title"] = "UpdateTeam";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Takım Üyesini Güncelle</h4>
+            <form class="forms-sample" asp-action="UpdateTeam" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id"/>
+                <input type="hidden" asp-for="ImageUrl"/>
+                <div class="form-group">
+                    <label class="form-label" asp-for="FullName"></label>
+                    <input asp-for="FullName" class="form-control" placeholder="Lütfen ad soyad giriniz...." />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="Title"></label>
+                    <input asp-for="Title" class="form-control" placeholder="Lütfen görev giriniz...." />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="FacebookUrl"></label>
+                    <input asp-for="FacebookUrl" class="form-control" placeholder="Lütfen facebook adresini giriniz...." />
+                    <span asp-validation-for="FacebookUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="TwitterUrl"></label>
+                    <input asp-for="TwitterUrl" class="form-control" placeholder="Lütfen twitter adresini giriniz...." />
+                    <span asp-validation-for="TwitterUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="InstagramUrl"></label>
+                    <input asp-for="InstagramUrl" class="form-control" placeholder="Lütfen instagram adresini giriniz...." />
+                    <span asp-validation-for="InstagramUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="WebSiteUrl"></label>
+                    <input asp-for="WebSiteUrl" class="form-control" placeholder="Lütfen website adresini giriniz...." />
+                    <span asp-validation-for="WebSiteUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="UploadImage"></label>
+                    <input onchange="loadfile(event)" asp-for="UploadImage" class="form-control" />
+                    <span asp-validation-for="UploadImage" class="text-danger"></span>
+                    <div>
+                        <img id="output" src="~/images/team/@Model.ImageUrl" alt="image" width="100" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-outline-info">Güncelle</button>
+                <button class="btn btn-light" asp-area="Admin" asp-controller="Teams" asp-action="Index">Vazgeç</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script>
+        var loadfile = function (event) {
+            var output = document.getElementById("output");
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function () {
+                URL.revokeObjectURL(output.src);
+            };
+        };
+    </script>
+}
+

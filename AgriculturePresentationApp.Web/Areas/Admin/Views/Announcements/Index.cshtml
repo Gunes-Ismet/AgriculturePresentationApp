@@ -1,0 +1,87 @@
+﻿
+@model List<GetAnnouncementVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Duyurular Listesi</h4>
+            <div class="table-responsive pt-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Başlık</th>
+                            <th>Tarih</th>
+                            <th>Güncelle</th>
+                            <th>Sil</th>
+                            <th>Statü</th>
+                            <th>Aktif/Pasif</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var announcement in Model)
+                        {
+                            <tr>
+                                <td>@announcement.Id</td>
+                                <td>@announcement.Title</td>
+                                <td>@announcement.Date.ToShortDateString()</td>
+                                <td>
+                                    <a asp-area="Admin" asp-controller="Announcements" asp-action="UpdateAnnouncement" asp-route-id="@announcement.Id" class="btn btn-outline-success">Güncelle</a>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal-@announcement.Id">
+                                        Sil
+                                    </button>
+
+                                    <div class="modal fade" id="exampleModal-@announcement.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Silme Uyarısı</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Silmek istediğinize emin misiniz?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">İptal</button>
+                                                    <a asp-area="Admin" asp-controller="Announcements" asp-action="RemoveAnnouncement" asp-route-id="@announcement.Id" class="btn btn-outline-danger">Sil</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                @if (announcement.Status == true)
+                                {
+                                    <td style="color:green">Aktif</td>
+                                }
+                                else
+                                {
+                                    <td style="color:grey">Pasif</td>
+                                }
+                                @if (announcement.Status == false)
+                                {
+                                    <td>
+                                        <a asp-area="Admin" asp-controller="Announcements" asp-action="StatusTrueFalse" asp-route-id="@announcement.Id" class="btn btn-outline-warning">Aktif Yap</a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <a asp-area="Admin" asp-controller="Announcements" asp-action="StatusTrueFalse" asp-route-id="@announcement.Id" class="btn btn-outline-secondary">Pasif Yap</a>
+                                    </td>
+                                }                                
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a asp-area="Admin" asp-controller="Announcements" asp-action="CreateAnnouncement" class="btn btn-outline-info mt-2">Yeni Duyuru Girişi</a>
+            </div>
+        </div>
+    </div>
+</div>
+

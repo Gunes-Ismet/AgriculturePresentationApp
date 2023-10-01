@@ -1,0 +1,31 @@
+﻿
+@model List<GetAboutVM>
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="about" id="about">
+	<div class="container">
+		<h3 class="tittle">Hakkımızda</h3>
+		<p class="heading-btm-w3ls">Dünya standartlarında tamamen organik & doğal ürünler.</p>
+		<div id="horizontalTab">
+			<ul class="resp-tabs-list">
+				<li>Tarihçe</li>
+				<li>Biz Kimiz</li>
+			</ul>
+			@foreach (var item in Model)
+			{
+				
+			<div class="resp-tabs-container">
+				<div class="tab1">
+					<p class="para-w3-agileits">@item.AboutHistory</p>
+				</div>
+				<div class="tab2">
+					<p class="para-w3-agileits">@item.AboutUs</p>
+				</div>
+			</div>
+			}
+		</div>
+	</div>
+</div>

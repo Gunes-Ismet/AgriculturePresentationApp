@@ -1,0 +1,46 @@
+﻿
+@model UpdateAdressDTO
+
+@{
+    ViewData["Title"] = "UpdateAdress";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Adres Güncelleme Sayfası</h4>
+            <form class="forms-sample" asp-action="UpdateAdress">
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label class="form-label" asp-for="Description1"></label>
+                    <input asp-for="Description1" class="form-control" />
+                    <span asp-validation-for="Description1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="Description2"></label>
+                    <input asp-for="Description2" class="form-control" />
+                    <span asp-validation-for="Description2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="Description3"></label>
+                    <input asp-for="Description3" class="form-control" />
+                    <span asp-validation-for="Description3" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="Description4"></label>
+                    <input type="tel" asp-for="Description4" class="form-control" />
+                    <span asp-validation-for="Description4" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="MapInfo"></label>
+                    <input asp-for="MapInfo" class="form-control" />
+                    <span asp-validation-for="MapInfo" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-outline-info">Güncelle</button>
+                <button class="btn btn-light" asp-area="Admin" asp-controller="Adresses" asp-action="Index">Vazgeç</button>
+            </form>
+        </div>
+    </div>
+</div>
+

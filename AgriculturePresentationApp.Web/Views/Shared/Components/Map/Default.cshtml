@@ -1,0 +1,9 @@
+﻿@model List<GetAdressVM>
+
+@foreach (var item in Model)
+{
+    <div class="map-w3ls">
+        <iframe src="@item.MapInfo"></iframe>
+    </div>
+
+}

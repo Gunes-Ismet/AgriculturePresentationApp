@@ -1,0 +1,51 @@
+﻿
+@model CreateAssistanceDTO
+
+@{
+    ViewData["Title"] = "CreateAssistance";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Yeni Hizmet Ekle</h4>
+            <form class="forms-sample" asp-action="CreateAssistance" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="form-label" asp-for="Title"></label>
+                    <input asp-for="Title" class="form-control" placeholder="Lütfen başlık giriniz...." />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="Description"></label>
+                    <textarea asp-for="Description" class="form-control" placeholder="Lütfen açıklama giriniz...."> </textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="UploadImage"></label>
+                    <input onchange="loadfile(event)" asp-for="UploadImage" class="form-control" />
+                    <span asp-validation-for="UploadImage" class="text-danger"></span>
+                    <div>
+                        <img id="output" width="100" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-outline-info">Ekle</button>
+                <button class="btn btn-light" asp-area="Admin" asp-controller="Assistances" asp-action="Index">Vazgeç</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script>
+        var loadfile = function (event) {
+            var output = document.getElementById("output");
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function () {
+                URL.revokeObjectURL(output.src);
+            };
+        };
+    </script>
+}
+

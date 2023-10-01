@@ -1,0 +1,58 @@
+﻿@model List<GetContactVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+            <h3 class="card-title">Mesajlar</h3>
+                <table class="table table-striped mt-2">
+                    <thead>
+                        <tr>
+                            <th>Ad Soyad</th>
+                            <th>E-mail</th>
+                            <th>Mesaj</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Mail</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal-@item.Id">
+                                        Mesajı Gör
+                                    </button>
+
+                                    <div class="modal fade" id="exampleModal-@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">@item.Name'in Mesajı</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    @item.Message
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Kapat</button>
+                                                    <a asp-area="Admin" asp-controller="Contacts" asp-action="RemoveMessage" asp-route-id="@item.Id" class="btn btn-outline-danger">Mesajı Sil</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

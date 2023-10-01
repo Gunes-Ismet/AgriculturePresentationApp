@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+
+
+    @await Component.InvokeAsync("DashBoardNavbar")
+
+    @await Component.InvokeAsync("DashBoardOverview")
+
+    @await Component.InvokeAsync("DashBoardMessages")
+
+    @await Component.InvokeAsync("DashBoardTable")
+
+    
+</div>
+
+
+

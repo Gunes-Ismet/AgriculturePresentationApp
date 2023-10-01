@@ -1,0 +1,65 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Admin" asp-controller="DashBoard" asp-action="Index">
+                <i class="mdi mdi-home menu-icon"></i>
+                <span class="menu-title">Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Admin" asp-controller="Assistances" asp-action="Index">
+                <i class="mdi mdi-assistant menu-icon"></i>
+                <span class="menu-title">Hizmetler</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Admin" asp-controller="Teams" asp-action="Index">
+                <i class="mdi mdi-worker menu-icon"></i>
+                <span class="menu-title">Takım Arkdaşlarımız</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Admin" asp-controller="Announcements" asp-action="Index">
+                <i class="mdi mdi-newspaper-minus menu-icon"></i>
+                <span class="menu-title">Duyurular</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Admin" asp-controller="Contacts" asp-action="Index">
+                <i class="mdi mdi-message menu-icon"></i>
+                <span class="menu-title">Gelen Mesajlar</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Admin" asp-controller="Adresses" asp-action="Index">
+                <i class="mdi mdi-looks menu-icon"></i>
+                <span class="menu-title">Adres Bilgileri</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Admin" asp-controller="Images" asp-action="Index">
+                <i class="mdi mdi-image-area menu-icon"></i>
+                <span class="menu-title">Görseller</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Admin" asp-controller="SocialMedias" asp-action="Index">
+                <i class="mdi mdi-image-area menu-icon"></i>
+                <span class="menu-title">Sosyal Medya</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Admin" asp-controller="Login" asp-action="LogOut">
+                <i class="mdi mdi-logout menu-icon"></i>
+                <span class="menu-title">Çıkış Yap</span>
+            </a>
+        </li>
+    </ul>
+</nav>

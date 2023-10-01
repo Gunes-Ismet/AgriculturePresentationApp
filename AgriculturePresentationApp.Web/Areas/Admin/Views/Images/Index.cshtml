@@ -1,0 +1,70 @@
+﻿
+@model List<GetImageVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Görsel Listesi</h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Güncelle</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var ımage in Model)
+                        {
+                            <tr>
+                                <td class="py-1">
+                                    <img src="~/images/image/@ımage.ImageUrl" alt="image" width="100" />
+                                </td>
+                                <td>@ımage.Id</td>
+                                <td>@ımage.Title</td>
+                                <td>
+                                    <a asp-area="Admin" asp-controller="Images" asp-action="UpdateImage" asp-route-id="@ımage.Id" class="btn btn-outline-success">Güncelle</a>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal-@ımage.Id">
+                                        Sil
+                                    </button>
+
+                                    <div class="modal fade" id="exampleModal-@ımage.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Silme Uyarısı</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Silmek istediğinize emin misiniz?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">İptal</button>
+                                                    <a asp-area="Admin" asp-controller="Images" asp-action="RemoveImage" asp-route-id="@ımage.Id" class="btn btn-outline-danger">Sil</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a asp-area="Admin" asp-controller="Images" asp-action="CreateImage" class="btn btn-outline-info mt-2">Yeni Görsel Ekle</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
